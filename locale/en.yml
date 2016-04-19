@@ -35,7 +35,7 @@ sijad-pages:
 
     # These strings are used in the pages list.
     pages_list:
-      empty_text: It looks like there are no page here.
+      empty_text: It looks like there are no pages here.
       title: => sijad-pages.ref.title
 
   # These strings are used in the navigation bar.
