@@ -16,7 +16,7 @@ class AddPagesApi
 
     public function configureApiRoutes(ConfigureApiRoutes $event)
     {
-        Page::setFormatter(app()->make('flarum.formatter'));
+        Page::setFormatter(app()->make('sijad.pages.formatter'));
 
         $event->get('/pages', 'pages.index', Controller\ListPagesController::class);
 
