@@ -213,7 +213,8 @@ System.register('sijad/pages/models/Page', ['flarum/Model', 'flarum/utils/mixin'
         contentHtml: Model.attribute('contentHtml'),
         contentPlain: computed('contentHtml', getPlainContent),
         slug: Model.attribute('slug'),
-        isHidden: Model.attribute('isHidden')
+        isHidden: Model.attribute('isHidden'),
+        isHtml: Model.attribute('isHtml')
       }));
 
       _export('default', Page);

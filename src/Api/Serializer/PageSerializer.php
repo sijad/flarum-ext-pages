@@ -22,7 +22,7 @@ class PageSerializer extends AbstractSerializer
             'slug' => $page->slug,
             'time' => $page->time,
             'editTime' => $page->edit_time,
-            'contentHtml' => $page->content_html,
+            'contentHtml' => $page->is_html ? nl2br($page->content) : $page->content_html,
         ];
 
         if ($this->actor->isAdmin()) {

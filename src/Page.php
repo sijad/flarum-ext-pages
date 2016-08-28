@@ -13,6 +13,15 @@ class Page extends AbstractModel
     protected $table = 'pages';
 
     /**
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+        'is_hidden' => 'boolean',
+        'is_html' => 'boolean',
+    ];
+
+    /**
      * {@inheritdoc}
      */
     protected $dates = ['time', 'edit_time'];
