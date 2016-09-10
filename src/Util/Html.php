@@ -14,8 +14,8 @@ class Html
                     $base = app('path.pages');
                     $path = trim($matches[1], " \r\n\t\f/.");
                     $path = $base.DIRECTORY_SEPARATOR.$path;
-                    if (substr($path, -10) != ($bladeExt = '.blade.php')) {
-                        $path .= $bladeExt;
+                    if (substr($path, -4) != '.php') {
+                        $path .= '.php';
                     }
                     $path = realpath($path);
                     if (!empty($path) && strpos($path, $base) === 0 && is_readable($path)) {
