@@ -9,7 +9,7 @@ class Html
     public static function render($html, Page $page) {
         if (strpos($html, '@include(') !== false) {
             $html = preg_replace_callback(
-                '/\@include\([\"\']([\.\/\w\s]+)[\"\']\)/mi',
+                '/\@include\([\"\']?([\.\/\w\s]+)[\"\']?\)/mi',
                 function ($matches) use ($page) {
                     $base = app('path.pages');
                     $path = trim($matches[1], " \r\n\t\f/.");
