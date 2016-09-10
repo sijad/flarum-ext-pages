@@ -90,12 +90,13 @@ class Page extends AbstractModel
     /**
      * Get the content rendered as HTML.
      *
-     * @param string $value
-     *
      * @return string
      */
-    public function getContentHtmlAttribute($value)
+    public function getContentHtmlAttribute()
     {
+        if ($this->attributes['is_html']) {
+            return nl2br($this->attributes['content']);
+        }
         return static::$formatter->render($this->attributes['content'], $this);
     }
 
