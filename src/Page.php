@@ -94,8 +94,8 @@ class Page extends AbstractModel
      */
     public function getContentHtmlAttribute()
     {
-        if ($this->attributes['is_html']) {
-            return nl2br($this->attributes['content']);
+        if ($this->is_html) {
+            return nl2br($this->content);
         }
         return static::$formatter->render($this->attributes['content'], $this);
     }
