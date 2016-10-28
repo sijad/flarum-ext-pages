@@ -61,11 +61,11 @@ class EditPageHandler
         }
 
         if (isset($attributes['isHidden'])) {
-            $page->is_hidden = $attributes['isHidden'];
+            $page->is_hidden = (bool) $attributes['isHidden'];
         }
 
         if (isset($attributes['isHtml'])) {
-            $page->is_html = $attributes['isHtml'];
+            $page->is_html = (bool) $attributes['isHtml'];
         }
 
         $page->edit_time = time();

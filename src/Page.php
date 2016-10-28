@@ -42,7 +42,7 @@ class Page extends AbstractModel
      *
      * @return static
      */
-    public static function build($title, $slug, $content, $isHidden)
+    public static function build($title, $slug, $content, $isHidden, $isHtml)
     {
         $page = new static();
 
@@ -50,7 +50,8 @@ class Page extends AbstractModel
         $page->slug = $slug;
         $page->time = time();
         $page->content = $content;
-        $page->is_hidden = $isHidden && true;
+        $page->is_hidden = (bool) $isHidden;
+        $page->is_html = (bool) $isHtml;
 
         return $page;
     }
