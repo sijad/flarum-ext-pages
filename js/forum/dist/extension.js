@@ -38,6 +38,7 @@ System.register('sijad/pages/components/HomePage', ['flarum/components/IndexPage
           key: 'show',
           value: function show(page) {
             this.page = page;
+            app.setTitle('');
             m.redraw();
           }
         }, {

@@ -16,6 +16,7 @@ export default class HomePage extends PagePage {
 
   show(page) {
     this.page = page;
+    app.setTitle('');
     m.redraw();
   }
 
