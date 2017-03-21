@@ -9,4 +9,5 @@ return function (Dispatcher $events) {
     $events->subscribe(Listener\AddClientAssets::class);
     $events->subscribe(Listener\AddPagesRoute::class);
     $events->subscribe(Listener\AddPagesApi::class);
+    $events->subscribe(Listener\AddApiAttributes::class);
 };

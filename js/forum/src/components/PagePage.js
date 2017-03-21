@@ -16,8 +16,6 @@ export default class PagePage extends Page {
 
     this.loadPage();
 
-    app.history.push('page');
-
     this.bodyClass = 'App--page';
   }
 
@@ -29,10 +27,10 @@ export default class PagePage extends Page {
         <div className="Pages-page">
           {page
             ? [
-              PageHero.component({page}),
-              <div className="container">
+              this.hero(),
+              <div className="Pages-container container">
                 <div className="Post-body">
-                  {m.trust(page.contentHtml())}
+                  {this.content()}
                 </div>
               </div>
             ]
@@ -43,6 +41,7 @@ export default class PagePage extends Page {
   }
 
   /**
+   * Initilize page.
    *
    * @param {sijad/pages/Page} page
    * @protected
@@ -56,12 +55,44 @@ export default class PagePage extends Page {
     m.redraw();
   }
 
+  /**
+   * Get the hero of current page.
+   *
+   * @return {VirtualElement}
+   */
+  hero() {
+    return PageHero.component({page: this.page});
+  }
+
+  /**
+   * Get the content of page.
+   *
+   * @return {VirtualElement}
+   */
+  content() {
+    return m.trust(this.page.contentHtml());
+  }
+
+  /**
+   * Get current page id from route.
+   *
+   * @return string
+   */
+  id() {
+    return m.route.param('id').split('-')[0];
+  }
+
+  /**
+   * Load page from the store, or make a request
+   * if we don't have it yet. Then initialize the page.
+   */
   loadPage() {
-    this.page = null;
-
-    app.store.find('pages', m.route.param('id').split('-')[0])
-        .then(this.show.bind(this));
-
-    m.lazyRedraw();
+    const id = this.id();
+    const page = app.store.getById('pages', id)
+    if (page) {
+      this.show(page);
+    } else {
+      app.store.find('pages', id).then(this.show.bind(this));
+    }
   }
 }

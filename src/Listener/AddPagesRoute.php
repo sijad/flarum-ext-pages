@@ -20,6 +20,7 @@ class AddPagesRoute
      */
     public function configureForumRoutes(ConfigureForumRoutes $event)
     {
+        $event->get('/pages/home', 'pages.home');
         $event->get('/p/{id:\d+(?:-[^/]*)?}', 'pages.page');
     }
 }

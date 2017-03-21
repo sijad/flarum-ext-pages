@@ -1,6 +1,68 @@
 'use strict';
 
+System.register('sijad/pages/components/HomePage', ['flarum/components/IndexPage', 'flarum/components/LoadingIndicator', 'flarum/components/Page', 'flarum/helpers/icon', 'sijad/pages/components/PagePage'], function (_export, _context) {
+  "use strict";
+
+  var IndexPage, LoadingIndicator, Page, icon, PagePage, HomePage;
+  return {
+    setters: [function (_flarumComponentsIndexPage) {
+      IndexPage = _flarumComponentsIndexPage.default;
+    }, function (_flarumComponentsLoadingIndicator) {
+      LoadingIndicator = _flarumComponentsLoadingIndicator.default;
+    }, function (_flarumComponentsPage) {
+      Page = _flarumComponentsPage.default;
+    }, function (_flarumHelpersIcon) {
+      icon = _flarumHelpersIcon.default;
+    }, function (_sijadPagesComponentsPagePage) {
+      PagePage = _sijadPagesComponentsPagePage.default;
+    }],
+    execute: function () {
+      HomePage = function (_PagePage) {
+        babelHelpers.inherits(HomePage, _PagePage);
+
+        function HomePage() {
+          babelHelpers.classCallCheck(this, HomePage);
+          return babelHelpers.possibleConstructorReturn(this, (HomePage.__proto__ || Object.getPrototypeOf(HomePage)).apply(this, arguments));
+        }
+
+        babelHelpers.createClass(HomePage, [{
+          key: 'init',
+          value: function init() {
+            babelHelpers.get(HomePage.prototype.__proto__ || Object.getPrototypeOf(HomePage.prototype), 'init', this).call(this);
+
+            app.history.push('homePage', icon('home'));
+            app.drawer.hide();
+            app.modal.close();
+          }
+        }, {
+          key: 'show',
+          value: function show(page) {
+            this.page = page;
+            m.redraw();
+          }
+        }, {
+          key: 'hero',
+          value: function hero() {
+            return IndexPage.prototype.hero();
+          }
+        }, {
+          key: 'id',
+          value: function id() {
+            return app.forum.attribute('pagesHome');
+          }
+        }]);
+        return HomePage;
+      }(PagePage);
+
+      _export('default', HomePage);
+    }
+  };
+});;
+'use strict';
+
 System.register('sijad/pages/components/PageHero', ['flarum/Component', 'flarum/utils/ItemList', 'flarum/helpers/listItems'], function (_export, _context) {
+  "use strict";
+
   var Component, ItemList, listItems, PageHero;
   return {
     setters: [function (_flarumComponent) {
@@ -16,7 +78,7 @@ System.register('sijad/pages/components/PageHero', ['flarum/Component', 'flarum/
 
         function PageHero() {
           babelHelpers.classCallCheck(this, PageHero);
-          return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(PageHero).apply(this, arguments));
+          return babelHelpers.possibleConstructorReturn(this, (PageHero.__proto__ || Object.getPrototypeOf(PageHero)).apply(this, arguments));
         }
 
         babelHelpers.createClass(PageHero, [{
@@ -65,6 +127,8 @@ System.register('sijad/pages/components/PageHero', ['flarum/Component', 'flarum/
 'use strict';
 
 System.register('sijad/pages/components/PagePage', ['flarum/components/Page', 'flarum/components/LoadingIndicator', 'sijad/pages/components/PageHero'], function (_export, _context) {
+  "use strict";
+
   var Page, LoadingIndicator, PageHero, PagePage;
   return {
     setters: [function (_flarumComponentsPage) {
@@ -80,13 +144,13 @@ System.register('sijad/pages/components/PagePage', ['flarum/components/Page', 'f
 
         function PagePage() {
           babelHelpers.classCallCheck(this, PagePage);
-          return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(PagePage).apply(this, arguments));
+          return babelHelpers.possibleConstructorReturn(this, (PagePage.__proto__ || Object.getPrototypeOf(PagePage)).apply(this, arguments));
         }
 
         babelHelpers.createClass(PagePage, [{
           key: 'init',
           value: function init() {
-            babelHelpers.get(Object.getPrototypeOf(PagePage.prototype), 'init', this).call(this);
+            babelHelpers.get(PagePage.prototype.__proto__ || Object.getPrototypeOf(PagePage.prototype), 'init', this).call(this);
 
             /**
              * The page that is being viewed.
@@ -96,8 +160,6 @@ System.register('sijad/pages/components/PagePage', ['flarum/components/Page', 'f
             this.page = null;
 
             this.loadPage();
-
-            app.history.push('page');
 
             this.bodyClass = 'App--page';
           }
@@ -112,13 +174,13 @@ System.register('sijad/pages/components/PagePage', ['flarum/components/Page', 'f
               m(
                 'div',
                 { className: 'Pages-page' },
-                page ? [PageHero.component({ page: page }), m(
+                page ? [this.hero(), m(
                   'div',
-                  { className: 'container' },
+                  { className: 'Pages-container container' },
                   m(
                     'div',
                     { className: 'Post-body' },
-                    m.trust(page.contentHtml())
+                    this.content()
                   )
                 )] : LoadingIndicator.component({ className: 'LoadingIndicator--block' })
               )
@@ -135,13 +197,30 @@ System.register('sijad/pages/components/PagePage', ['flarum/components/Page', 'f
             m.redraw();
           }
         }, {
+          key: 'hero',
+          value: function hero() {
+            return PageHero.component({ page: this.page });
+          }
+        }, {
+          key: 'content',
+          value: function content() {
+            return m.trust(this.page.contentHtml());
+          }
+        }, {
+          key: 'id',
+          value: function id() {
+            return m.route.param('id').split('-')[0];
+          }
+        }, {
           key: 'loadPage',
           value: function loadPage() {
-            this.page = null;
-
-            app.store.find('pages', m.route.param('id').split('-')[0]).then(this.show.bind(this));
-
-            m.lazyRedraw();
+            var id = this.id();
+            var page = app.store.getById('pages', id);
+            if (page) {
+              this.show(page);
+            } else {
+              app.store.find('pages', id).then(this.show.bind(this));
+            }
           }
         }]);
         return PagePage;
@@ -153,10 +232,14 @@ System.register('sijad/pages/components/PagePage', ['flarum/components/Page', 'f
 });;
 'use strict';
 
-System.register('sijad/pages/main', ['sijad/pages/components/PagePage', 'sijad/pages/models/Page'], function (_export, _context) {
-  var PagePage, Page;
+System.register('sijad/pages/main', ['sijad/pages/components/HomePage', 'sijad/pages/components/PagePage', 'sijad/pages/models/Page'], function (_export, _context) {
+  "use strict";
+
+  var HomePage, PagePage, Page;
   return {
-    setters: [function (_sijadPagesComponentsPagePage) {
+    setters: [function (_sijadPagesComponentsHomePage) {
+      HomePage = _sijadPagesComponentsHomePage.default;
+    }, function (_sijadPagesComponentsPagePage) {
       PagePage = _sijadPagesComponentsPagePage.default;
     }, function (_sijadPagesModelsPage) {
       Page = _sijadPagesModelsPage.default;
@@ -164,6 +247,8 @@ System.register('sijad/pages/main', ['sijad/pages/components/PagePage', 'sijad/p
     execute: function () {
 
       app.initializers.add('sijad-pages', function (app) {
+        app.routes.homePage = { path: '/pages/home', component: HomePage.component() };
+
         app.routes.page = { path: '/p/:id', component: PagePage.component() };
         app.store.models.pages = Page;
         /**
@@ -184,6 +269,8 @@ System.register('sijad/pages/main', ['sijad/pages/components/PagePage', 'sijad/p
 'use strict';
 
 System.register('sijad/pages/models/Page', ['flarum/Model', 'flarum/utils/mixin', 'flarum/utils/computed', 'flarum/utils/string'], function (_export, _context) {
+  "use strict";
+
   var Model, mixin, computed, getPlainContent, Page;
   return {
     setters: [function (_flarumModel) {
@@ -201,7 +288,7 @@ System.register('sijad/pages/models/Page', ['flarum/Model', 'flarum/utils/mixin'
 
         function Page() {
           babelHelpers.classCallCheck(this, Page);
-          return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(Page).apply(this, arguments));
+          return babelHelpers.possibleConstructorReturn(this, (Page.__proto__ || Object.getPrototypeOf(Page)).apply(this, arguments));
         }
 
         return Page;

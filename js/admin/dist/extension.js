@@ -1,6 +1,8 @@
 'use strict';
 
 System.register('sijad/pages/addPagesPane', ['flarum/extend', 'flarum/components/AdminNav', 'flarum/components/AdminLinkButton', 'sijad/pages/components/PagesPage'], function (_export, _context) {
+  "use strict";
+
   var extend, AdminNav, AdminLinkButton, PagesPage;
 
   _export('default', function () {
@@ -36,6 +38,8 @@ System.register('sijad/pages/addPagesPane', ['flarum/extend', 'flarum/components
 'use strict';
 
 System.register('sijad/pages/components/EditPageModal', ['flarum/components/Modal', 'flarum/components/Button', 'flarum/utils/string'], function (_export, _context) {
+  "use strict";
+
   var Modal, Button, slug, EditPageModal;
   return {
     setters: [function (_flarumComponentsModal) {
@@ -51,13 +55,13 @@ System.register('sijad/pages/components/EditPageModal', ['flarum/components/Moda
 
         function EditPageModal() {
           babelHelpers.classCallCheck(this, EditPageModal);
-          return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(EditPageModal).apply(this, arguments));
+          return babelHelpers.possibleConstructorReturn(this, (EditPageModal.__proto__ || Object.getPrototypeOf(EditPageModal)).apply(this, arguments));
         }
 
         babelHelpers.createClass(EditPageModal, [{
           key: 'init',
           value: function init() {
-            babelHelpers.get(Object.getPrototypeOf(EditPageModal.prototype), 'init', this).call(this);
+            babelHelpers.get(EditPageModal.prototype.__proto__ || Object.getPrototypeOf(EditPageModal.prototype), 'init', this).call(this);
 
             this.page = this.props.page || app.store.createRecord('pages');
 
@@ -217,6 +221,8 @@ System.register('sijad/pages/components/EditPageModal', ['flarum/components/Moda
 'use strict';
 
 System.register('sijad/pages/components/PagesList', ['flarum/Component', 'flarum/components/LoadingIndicator', 'flarum/components/Placeholder', 'flarum/components/Button', 'sijad/pages/components/PagesListItem'], function (_export, _context) {
+  "use strict";
+
   var Component, LoadingIndicator, Placeholder, Button, PagesListItem, PagesList;
   return {
     setters: [function (_flarumComponent) {
@@ -236,7 +242,7 @@ System.register('sijad/pages/components/PagesList', ['flarum/Component', 'flarum
 
         function PagesList() {
           babelHelpers.classCallCheck(this, PagesList);
-          return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(PagesList).apply(this, arguments));
+          return babelHelpers.possibleConstructorReturn(this, (PagesList.__proto__ || Object.getPrototypeOf(PagesList)).apply(this, arguments));
         }
 
         babelHelpers.createClass(PagesList, [{
@@ -346,7 +352,7 @@ System.register('sijad/pages/components/PagesList', ['flarum/Component', 'flarum
         }, {
           key: 'refresh',
           value: function refresh() {
-            var clear = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
+            var clear = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
 
             if (clear) {
               this.loading = true;
@@ -404,6 +410,8 @@ System.register('sijad/pages/components/PagesList', ['flarum/Component', 'flarum
 'use strict';
 
 System.register('sijad/pages/components/PagesListItem', ['flarum/Component', 'flarum/components/Button', 'sijad/pages/components/EditPageModal'], function (_export, _context) {
+  "use strict";
+
   var Component, Button, EditPageModal, PagesListItem;
   return {
     setters: [function (_flarumComponent) {
@@ -419,7 +427,7 @@ System.register('sijad/pages/components/PagesListItem', ['flarum/Component', 'fl
 
         function PagesListItem() {
           babelHelpers.classCallCheck(this, PagesListItem);
-          return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(PagesListItem).apply(this, arguments));
+          return babelHelpers.possibleConstructorReturn(this, (PagesListItem.__proto__ || Object.getPrototypeOf(PagesListItem)).apply(this, arguments));
         }
 
         babelHelpers.createClass(PagesListItem, [{
@@ -484,6 +492,8 @@ System.register('sijad/pages/components/PagesListItem', ['flarum/Component', 'fl
 'use strict';
 
 System.register('sijad/pages/components/PagesPage', ['flarum/components/Page', 'flarum/components/Button', 'flarum/components/LoadingIndicator', 'sijad/pages/components/EditPageModal', 'sijad/pages/components/PagesList'], function (_export, _context) {
+  "use strict";
+
   var Page, Button, LoadingIndicator, EditPageModal, PagesList, PagesPage;
   return {
     setters: [function (_flarumComponentsPage) {
@@ -503,7 +513,7 @@ System.register('sijad/pages/components/PagesPage', ['flarum/components/Page', '
 
         function PagesPage() {
           babelHelpers.classCallCheck(this, PagesPage);
-          return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(PagesPage).apply(this, arguments));
+          return babelHelpers.possibleConstructorReturn(this, (PagesPage.__proto__ || Object.getPrototypeOf(PagesPage)).apply(this, arguments));
         }
 
         babelHelpers.createClass(PagesPage, [{
@@ -555,6 +565,8 @@ System.register('sijad/pages/components/PagesPage', ['flarum/components/Page', '
 'use strict';
 
 System.register('sijad/pages/main', ['flarum/extend', 'sijad/pages/models/Page', 'sijad/pages/addPagesPane'], function (_export, _context) {
+  "use strict";
+
   var extend, Page, addPagesPane;
   return {
     setters: [function (_flarumExtend) {
@@ -576,6 +588,8 @@ System.register('sijad/pages/main', ['flarum/extend', 'sijad/pages/models/Page',
 'use strict';
 
 System.register('sijad/pages/models/Page', ['flarum/Model', 'flarum/utils/mixin', 'flarum/utils/computed', 'flarum/utils/string'], function (_export, _context) {
+  "use strict";
+
   var Model, mixin, computed, getPlainContent, Page;
   return {
     setters: [function (_flarumModel) {
@@ -593,7 +607,7 @@ System.register('sijad/pages/models/Page', ['flarum/Model', 'flarum/utils/mixin'
 
         function Page() {
           babelHelpers.classCallCheck(this, Page);
-          return babelHelpers.possibleConstructorReturn(this, Object.getPrototypeOf(Page).apply(this, arguments));
+          return babelHelpers.possibleConstructorReturn(this, (Page.__proto__ || Object.getPrototypeOf(Page)).apply(this, arguments));
         }
 
         return Page;
