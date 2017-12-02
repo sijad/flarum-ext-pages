@@ -409,15 +409,19 @@ System.register('sijad/pages/components/PagesList', ['flarum/Component', 'flarum
 });;
 'use strict';
 
-System.register('sijad/pages/components/PagesListItem', ['flarum/Component', 'flarum/components/Button', 'sijad/pages/components/EditPageModal'], function (_export, _context) {
+System.register('sijad/pages/components/PagesListItem', ['flarum/components/Alert', 'flarum/components/Button', 'flarum/Component', 'flarum/utils/saveSettings', 'sijad/pages/components/EditPageModal'], function (_export, _context) {
   "use strict";
 
-  var Component, Button, EditPageModal, PagesListItem;
+  var Alert, Button, Component, saveSettings, EditPageModal, PagesListItem;
   return {
-    setters: [function (_flarumComponent) {
-      Component = _flarumComponent.default;
+    setters: [function (_flarumComponentsAlert) {
+      Alert = _flarumComponentsAlert.default;
     }, function (_flarumComponentsButton) {
       Button = _flarumComponentsButton.default;
+    }, function (_flarumComponent) {
+      Component = _flarumComponent.default;
+    }, function (_flarumUtilsSaveSettings) {
+      saveSettings = _flarumUtilsSaveSettings.default;
     }, function (_sijadPagesComponentsEditPageModal) {
       EditPageModal = _sijadPagesComponentsEditPageModal.default;
     }],
@@ -456,6 +460,11 @@ System.register('sijad/pages/components/PagesListItem', ['flarum/Component', 'fl
                       return app.modal.show(new EditPageModal({ page: page }));
                     }
                   }),
+                  Button.component({
+                    className: 'Button Button--page-edit',
+                    icon: 'home',
+                    onclick: this.setAsHomePage.bind(this)
+                  }),
                   m(
                     'a',
                     { 'class': 'Button Button--page-view hasIcon', target: '_blank', href: url },
@@ -471,11 +480,29 @@ System.register('sijad/pages/components/PagesListItem', ['flarum/Component', 'fl
             );
           }
         }, {
+          key: 'setAsHomePage',
+          value: function setAsHomePage() {
+            var _this2 = this;
+
+            app.alerts.dismiss(this.successAlert);
+            if (confirm(app.translator.trans('sijad-pages.admin.edit_page.set_as_home_page_confirmation'))) {
+              var page = this.props.page;
+              saveSettings({
+                default_route: '/pages/home',
+                pages_home: page.id()
+              }).then(function () {
+                app.alerts.show(_this2.successAlert = new Alert({ type: 'success', children: app.translator.trans('core.admin.basics.saved_message') }));
+              }).catch(function () {}).then(function () {
+                _this2.loading = false;
+                m.redraw();
+              });
+            }
+          }
+        }, {
           key: 'delete',
           value: function _delete() {
             if (confirm(app.translator.trans('sijad-pages.admin.edit_page.delete_page_confirmation'))) {
               var page = this.props.page;
-              m.redraw.strategy('all');
               page.delete().then(function () {
                 return m.redraw();
               });
