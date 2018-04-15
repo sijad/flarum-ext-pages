@@ -3,11 +3,18 @@
 namespace Sijad\Pages\Command;
 
 use Flarum\Core\Access\AssertPermissionTrait;
+use Flarum\Settings\SettingsRepositoryInterface;
+
 use Sijad\Pages\PageRepository;
 
 class DeletePageHandler
 {
     use AssertPermissionTrait;
+
+    /**
+     * @var SettingsRepositoryInterface
+     */
+    protected $settings;
 
     /**
      * @var PageRepository
@@ -17,9 +24,10 @@ class DeletePageHandler
     /**
      * @param PageRepository $pages
      */
-    public function __construct(PageRepository $pages)
+    public function __construct(PageRepository $pages, SettingsRepositoryInterface $settings)
     {
         $this->pages = $pages;
+        $this->settings = $settings;
     }
 
     /**
@@ -36,6 +44,13 @@ class DeletePageHandler
         $page = $this->pages->findOrFail($command->pageId, $actor);
 
         $this->assertAdmin($actor);
+
+        // if it has been set as home page revert back to default router
+        $homePage = intval($this->settings->get('pages_home'));
+        if ($homePage && $page->id === $homePage) {
+            $this->settings->delete('pages_home');
+            $this->settings->set('default_route', '/all');
+        }
 
         $page->delete();
 
