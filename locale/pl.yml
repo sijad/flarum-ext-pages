@@ -42,7 +42,7 @@ sijad-pages:
   # These strings are used in the navigation bar.
   ref:
     content: Zawartość
-    create_page: Create Page
+    create_page: Stwórz stronę
     pages: Strony
     slug: Slug
     title: Tytuł
