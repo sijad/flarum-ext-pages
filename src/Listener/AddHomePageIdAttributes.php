@@ -2,12 +2,12 @@
 
 namespace Sijad\Pages\Listener;
 
-use Illuminate\Contracts\Events\Dispatcher;
-use Flarum\Event\PrepareApiAttributes;
+use Flarum\Api\Event\Serializing;
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Settings\SettingsRepositoryInterface;
+use Illuminate\Contracts\Events\Dispatcher;
 
-class AddApiAttributes {
+class AddHomePageIdAttributes {
     /**
      * @var SettingsRepositoryInterface
      */
@@ -23,13 +23,14 @@ class AddApiAttributes {
 
     public function subscribe(Dispatcher $events)
     {
-        $events->listen(PrepareApiAttributes::class, [$this, 'prepareApiAttributes']);
+        $events->listen(Serializing::class, [$this, 'prepareApiAttributes']);
     }
 
-    public function prepareApiAttributes(PrepareApiAttributes $event) {
-        $id = intval($this->settings->get('pages_home'));
-        if ($id && $event->isSerializer(ForumSerializer::class)) {
-            $event->attributes['pagesHome'] = $id;
+    public function prepareApiAttributes(Serializing $event) {
+        if ($event->isSerializer(ForumSerializer::class)) {
+            if ($id = $this->settings->get('pages_home')) {
+                $event->attributes['pagesHome'] = intval($id);
+            }
         }
     }
 }
