@@ -4,6 +4,7 @@
 use Flarum\Extend;
 use Sijad\Pages\Api\Controller;
 use Sijad\Pages\Listener;
+use Sijad\Pages\Page;
 use Illuminate\Contracts\Events\Dispatcher;
 
 return [
@@ -28,6 +29,9 @@ return [
 
     function (Dispatcher $events) {
         app()->instance('path.pages', base_path().DIRECTORY_SEPARATOR.'pages');
+
+        Page::setFormatter(app()->make('flarum.formatter'));
+
         $events->subscribe(Listener\AddHomePageIdAttributes::class);
     }
 ];
