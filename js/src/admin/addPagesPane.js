@@ -2,7 +2,7 @@ import { extend } from 'flarum/extend';
 import AdminNav from 'flarum/components/AdminNav';
 import AdminLinkButton from 'flarum/components/AdminLinkButton';
 
-import PagesPage from 'sijad/pages/components/PagesPage';
+import PagesPage from './components/PagesPage';
 
 export default function() {
   app.routes.pages = {path: '/pages', component: PagesPage.component()};

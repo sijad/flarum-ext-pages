@@ -3,7 +3,7 @@ import LoadingIndicator from 'flarum/components/LoadingIndicator';
 import Placeholder from 'flarum/components/Placeholder';
 import Button from 'flarum/components/Button';
 
-import PagesListItem from 'sijad/pages/components/PagesListItem';
+import PagesListItem from './PagesListItem';
 
 /**
  * The `PagesList` component displays a list of Pages.

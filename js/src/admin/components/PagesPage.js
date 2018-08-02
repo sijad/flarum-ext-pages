@@ -2,8 +2,8 @@ import Page from 'flarum/components/Page';
 import Button from 'flarum/components/Button';
 import LoadingIndicator from 'flarum/components/LoadingIndicator';
 
-import EditPageModal from 'sijad/pages/components/EditPageModal';
-import PagesList from 'sijad/pages/components/PagesList';
+import EditPageModal from './EditPageModal';
+import PagesList from './PagesList';
 
 export default class PagesPage extends Page {
   view() {

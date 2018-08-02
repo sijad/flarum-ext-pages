@@ -3,7 +3,7 @@ import Button from 'flarum/components/Button';
 import Component from 'flarum/Component';
 import saveSettings from 'flarum/utils/saveSettings';
 
-import EditPageModal from 'sijad/pages/components/EditPageModal';
+import EditPageModal from './EditPageModal';
 
 /**
  * ### Props

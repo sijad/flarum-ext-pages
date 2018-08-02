@@ -1,7 +1,7 @@
 import Page from 'flarum/components/Page';
 import LoadingIndicator from 'flarum/components/LoadingIndicator';
 
-import PageHero from 'sijad/pages/components/PageHero';
+import PageHero from './PageHero';
 
 export default class PagePage extends Page {
   init() {

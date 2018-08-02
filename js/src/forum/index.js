@@ -1,6 +1,6 @@
-import HomePage from 'sijad/pages/components/HomePage';
-import PagePage from 'sijad/pages/components/PagePage';
-import Page from 'sijad/pages/models/Page';
+import HomePage from './components/HomePage';
+import PagePage from './components/PagePage';
+import Page from '../common/models/Page';
 
 app.initializers.add('sijad-pages', app => {
   app.routes.homePage = {path: '/pages/home', component: HomePage.component()};

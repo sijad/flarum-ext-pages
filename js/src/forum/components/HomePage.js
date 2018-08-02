@@ -3,7 +3,7 @@ import LoadingIndicator from 'flarum/components/LoadingIndicator';
 import Page from 'flarum/components/Page';
 import icon from 'flarum/helpers/icon';
 
-import PagePage from 'sijad/pages/components/PagePage';
+import PagePage from './PagePage';
 
 export default class HomePage extends PagePage {
   init() {
