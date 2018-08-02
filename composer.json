@@ -26,7 +26,7 @@
         "flarum-extension": {
             "title": "Pages",
             "icon": {
-                "name": "file-text-o",
+                "name": "fas fa-file-text-o",
                 "backgroundColor": "#4C49A2",
                 "color": "#B8DC3C"
             }

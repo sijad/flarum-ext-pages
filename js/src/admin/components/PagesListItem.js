@@ -21,20 +21,20 @@ export default class PagesListItem extends Component {
           <div className="ButtonGroup">
             {Button.component({
               className: 'Button Button--page-edit',
-              icon: 'pencil',
+              icon: 'fas fa-pencil-alt',
               onclick: () => app.modal.show(new EditPageModal({page}))
             })}
             {Button.component({
               className: 'Button Button--page-edit',
-              icon: 'home',
+              icon: 'fas fa-home',
               onclick: this.setAsHomePage.bind(this)
             })}
             <a class="Button Button--page-view hasIcon" target="_blank" href={url}>
-              <i class="icon fa fa-fw fa-eye Button-icon"></i>
+              <i class="icon fas fa-eye Button-icon"></i>
             </a>
             {Button.component({
               className: 'Button Button--danger Button--page-delete',
-              icon: 'times',
+              icon: 'fas fa-times',
               onclick: this.delete.bind(this)
             })}
           </div>

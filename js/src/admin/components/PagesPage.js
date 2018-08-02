@@ -16,7 +16,7 @@ export default class PagesPage extends Page {
             </p>
             {Button.component({
               className: 'Button Button--primary',
-              icon: 'plus',
+              icon: 'fas fa-plus',
               children: app.translator.trans('sijad-pages.admin.pages.create_button'),
               onclick: () => app.modal.show(new EditPageModal())
             })}

@@ -1179,7 +1179,7 @@ function (_Component) {
     if (this.nextResults === true) {
       next = flarum_components_Button__WEBPACK_IMPORTED_MODULE_4___default.a.component({
         className: 'Button Button--PageList-next',
-        icon: 'angle-right',
+        icon: 'fas fa-angle-right',
         onclick: this.loadNext.bind(this)
       });
     }
@@ -1187,7 +1187,7 @@ function (_Component) {
     if (this.prevResults === true) {
       prev = flarum_components_Button__WEBPACK_IMPORTED_MODULE_4___default.a.component({
         className: 'Button Button--PageList-prev',
-        icon: 'angle-left',
+        icon: 'fas fa-angle-left',
         onclick: this.loadPrev.bind(this)
       });
     }
@@ -1343,7 +1343,7 @@ function (_Component) {
       className: "ButtonGroup"
     }, flarum_components_Button__WEBPACK_IMPORTED_MODULE_2___default.a.component({
       className: 'Button Button--page-edit',
-      icon: 'pencil',
+      icon: 'fas fa-pencil-alt',
       onclick: function onclick() {
         return app.modal.show(new _EditPageModal__WEBPACK_IMPORTED_MODULE_5__["default"]({
           page: page
@@ -1351,17 +1351,17 @@ function (_Component) {
       }
     }), flarum_components_Button__WEBPACK_IMPORTED_MODULE_2___default.a.component({
       className: 'Button Button--page-edit',
-      icon: 'home',
+      icon: 'fas fa-home',
       onclick: this.setAsHomePage.bind(this)
     }), m("a", {
       class: "Button Button--page-view hasIcon",
       target: "_blank",
       href: url
     }, m("i", {
-      class: "icon fa fa-fw fa-eye Button-icon"
+      class: "icon fas fa-eye Button-icon"
     })), flarum_components_Button__WEBPACK_IMPORTED_MODULE_2___default.a.component({
       className: 'Button Button--danger Button--page-delete',
-      icon: 'times',
+      icon: 'fas fa-times',
       onclick: this.delete.bind(this)
     }))));
   };
@@ -1450,7 +1450,7 @@ function (_Page) {
       className: "container"
     }, m("p", null, app.translator.trans('sijad-pages.admin.pages.about_text')), flarum_components_Button__WEBPACK_IMPORTED_MODULE_2___default.a.component({
       className: 'Button Button--primary',
-      icon: 'plus',
+      icon: 'fas fa-plus',
       children: app.translator.trans('sijad-pages.admin.pages.create_button'),
       onclick: function onclick() {
         return app.modal.show(new _EditPageModal__WEBPACK_IMPORTED_MODULE_4__["default"]());

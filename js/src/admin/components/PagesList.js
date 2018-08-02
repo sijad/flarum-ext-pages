@@ -61,7 +61,7 @@ export default class PagesList extends Component {
     if(this.nextResults === true) {
       next = Button.component({
         className: 'Button Button--PageList-next',
-        icon: 'angle-right',
+        icon: 'fas fa-angle-right',
         onclick: this.loadNext.bind(this)
       });
     }
@@ -69,7 +69,7 @@ export default class PagesList extends Component {
     if(this.prevResults === true) {
       prev = Button.component({
         className: 'Button Button--PageList-prev',
-        icon: 'angle-left',
+        icon: 'fas fa-angle-left',
         onclick: this.loadPrev.bind(this)
       });
     }
