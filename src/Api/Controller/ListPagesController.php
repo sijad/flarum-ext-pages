@@ -2,14 +2,14 @@
 
 namespace Sijad\Pages\Api\Controller;
 
-use Flarum\Api\Controller\AbstractCollectionController;
-use Flarum\Api\UrlGenerator;
-use Flarum\Core\Search\SearchCriteria;
+use Flarum\Api\Controller\AbstractListController;
+use Flarum\Http\UrlGenerator;
+use Flarum\Search\SearchCriteria;
 use Psr\Http\Message\ServerRequestInterface;
 use Sijad\Pages\Search\Page\PageSearcher;
 use Tobscure\JsonApi\Document;
 
-class ListPagesController extends AbstractCollectionController
+class ListPagesController extends AbstractListController
 {
     /**
      * {@inheritdoc}
@@ -57,7 +57,7 @@ class ListPagesController extends AbstractCollectionController
         $results = $this->searcher->search($criteria, $limit, $offset);
 
         $document->addPaginationLinks(
-            $this->url->toRoute('pages.index'),
+            $this->url->to('api')->route('pages.index'),
             $request->getQueryParams(),
             $offset,
             $limit,

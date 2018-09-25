@@ -29,6 +29,7 @@ class PageSerializer extends AbstractSerializer
         if ($this->actor->isAdmin()) {
             $attributes['content'] = $page->content;
             $attributes['isHidden'] = $page->is_hidden;
+            $attributes['isHtml'] = $page->is_html;
         }
 
         return $attributes;

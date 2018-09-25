@@ -2,13 +2,13 @@
 
 namespace Sijad\Pages\Api\Controller;
 
-use Flarum\Api\Controller\AbstractResourceController;
+use Flarum\Api\Controller\AbstractShowController;
 use Illuminate\Contracts\Bus\Dispatcher;
 use Psr\Http\Message\ServerRequestInterface;
 use Sijad\Pages\Command\EditPage;
 use Tobscure\JsonApi\Document;
 
-class UpdatePageController extends AbstractResourceController
+class UpdatePageController extends AbstractShowController
 {
     /**
      * {@inheritdoc}

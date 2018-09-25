@@ -2,7 +2,7 @@
 
 namespace Sijad\Pages;
 
-use Flarum\Core\Validator\AbstractValidator;
+use Flarum\Foundation\AbstractValidator;
 
 class PageValidator extends AbstractValidator
 {

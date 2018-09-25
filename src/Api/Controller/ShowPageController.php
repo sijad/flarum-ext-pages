@@ -2,12 +2,12 @@
 
 namespace Sijad\Pages\Api\Controller;
 
-use Flarum\Api\Controller\AbstractResourceController;
+use Flarum\Api\Controller\AbstractShowController;
 use Psr\Http\Message\ServerRequestInterface;
 use Sijad\Pages\PageRepository;
 use Tobscure\JsonApi\Document;
 
-class ShowPageController extends AbstractResourceController
+class ShowPageController extends AbstractShowController
 {
     /**
      * {@inheritdoc}

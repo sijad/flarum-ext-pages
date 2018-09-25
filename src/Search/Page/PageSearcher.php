@@ -2,10 +2,10 @@
 
 namespace Sijad\Pages\Search\Page;
 
-use Flarum\Core\Search\ApplySearchParametersTrait;
-use Flarum\Core\Search\GambitManager;
-use Flarum\Core\Search\SearchCriteria;
-use Flarum\Core\Search\SearchResults;
+use Flarum\Search\ApplySearchParametersTrait;
+use Flarum\Search\GambitManager;
+use Flarum\Search\SearchCriteria;
+use Flarum\Search\SearchResults;
 use Sijad\Pages\PageRepository;
 
 class PageSearcher
