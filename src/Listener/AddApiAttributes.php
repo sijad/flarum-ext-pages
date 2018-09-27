@@ -27,9 +27,10 @@ class AddApiAttributes {
     }
 
     public function serializing(Serializing $event) {
-        $id = intval($this->settings->get('pages_home'));
         if ($id && $event->isSerializer(ForumSerializer::class)) {
-            $event->attributes['pagesHome'] = $id;
+            if ($id = $this->settings->get('pages_home')) {
+                $event->attributes['pagesHome'] = $id;
+            }
         }
     }
 }
