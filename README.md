@@ -1,3 +1,7 @@
+# Deprecated
+
+please use [fof/pages](https://github.com/FriendsOfFlarum/pages)
+
 # Flarum Pages
 
 Create custom static pages in Flarum.
