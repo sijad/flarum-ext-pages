@@ -15,7 +15,7 @@
         "source": "https://github.com/sijad/flarum-ext-pages"
     },
     "require": {
-        "flarum/core": "^0.1.0-beta.6"
+        "flarum/core": "^0.1.0-beta.8"
     },
     "autoload": {
         "psr-4": {
@@ -26,7 +26,7 @@
         "flarum-extension": {
             "title": "Pages",
             "icon": {
-                "name": "file-text-o",
+                "name": "far fa-file-alt",
                 "backgroundColor": "#4C49A2",
                 "color": "#B8DC3C"
             }

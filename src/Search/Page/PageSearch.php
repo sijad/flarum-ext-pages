@@ -2,7 +2,7 @@
 
 namespace Sijad\Pages\Search\Page;
 
-use Flarum\Core\Search\AbstractSearch;
+use Flarum\Search\AbstractSearch;
 
 class PageSearch extends AbstractSearch
 {

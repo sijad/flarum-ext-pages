@@ -2,9 +2,8 @@
 
 namespace Sijad\Pages\Command;
 
-use Flarum\Core\Access\AssertPermissionTrait;
 use Flarum\Settings\SettingsRepositoryInterface;
-
+use Flarum\User\AssertPermissionTrait;
 use Sijad\Pages\PageRepository;
 
 class DeletePageHandler

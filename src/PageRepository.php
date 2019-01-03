@@ -2,7 +2,7 @@
 
 namespace Sijad\Pages;
 
-use Flarum\Core\User;
+use Flarum\User\User;
 use Illuminate\Database\Eloquent\Builder;
 
 class PageRepository

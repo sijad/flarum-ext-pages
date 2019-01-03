@@ -2,7 +2,7 @@
 
 namespace Sijad\Pages\Command;
 
-use Flarum\Core\Access\AssertPermissionTrait;
+use Flarum\User\AssertPermissionTrait;
 use Sijad\Pages\PageRepository;
 use Sijad\Pages\PageValidator;
 
